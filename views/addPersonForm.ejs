@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Person Form</title>
+</head>
+<body>
+    <h1>Add a New Person</h1>
+    <form action="/add-person" method="POST">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="initials">Initials:</label>
+        <input type="text" id="initials" name="initials" maxlength="4" required><br>
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" required><br>
+
+        <label for="companyId">Company:</label>
+        <select id="companyId" name="companyId" required>
+            <% companies.forEach(company => { %>
+                <option value="<%= company.id %>"><%= company.id %>, <%= company.company_name %></option>
+            <% }); %>
+        </select><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

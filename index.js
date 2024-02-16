@@ -57,9 +57,16 @@ app.use((req, res, next) => {
 // Routes will go here
 const userRoutes = require("./routes/userRoute"); 
 const companyRoutes = require("./routes/companyRoute"); 
+const personRoutes = require("./routes/personRoute");
+
+
 //Routes usage will go here
 app.use(userRoutes);
 app.use(companyRoutes);
+app.use(personRoutes);
+
+
+
 // Listen for the port Number
 sequelize.authenticate().then(() => {
     console.log('Database connection has been established successfully.');
