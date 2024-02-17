@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Person</title>
+</head>
+<body>
+    <h1>Update Person</h1>
+    <form action="/update-person/<%= person.id %>" method="POST">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="<%= person.firstName %>" required><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" value="<%= person.lastName %>" required><br>
+        
+        <label for="initials">Initials:</label>
+        <input type="text" id="initials" name="initials" value="<%= person.initials %>" required maxlength="4"><br>
+        
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" value="<%= person.role %>" required><br>
+        
+        <label for="companyId">Company:</label>
+        <select id="companyId" name="companyId" required>
+            <% companies.forEach(company => { %>
+                <option value="<%= company.id %>" <%= person.companyId == company.id ? 'selected' : '' %>><%= company.company_name %></option>
+            <% }); %>
+        </select><br>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

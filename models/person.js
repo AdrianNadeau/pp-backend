@@ -22,7 +22,7 @@ const Person = sequelize.define('Person', {
         allowNull: false
     }
 }, {
-    tableName: 'person'
+    tableName: 'Persons'
 });
 
 // Define the association with the Company model

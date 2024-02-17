@@ -6,9 +6,9 @@ const Company = require("../models/company");
 
 //Route to render the company creation form 
 router.get("/company", (req, res) => {
-    res.render("companyForm");
-})
-
+    res.render("./company/createCompany");
+});
+// Create Company Route
 router.post("/create-company", async (req, res) => {
     try{
         const { company_name, company_description, company_details} = req.body;
