@@ -18,7 +18,7 @@ router.post("/add-person", async (req, res) => {
     try {
         const { firstName, lastName, initials, role, companyId } = req.body;
         const newPerson = await Person.create({ firstName, lastName, initials, role, companyId });
-        res.send("Person added successfully!");
+        res.redirect('/persons');
 
     } catch (error) {
         console.error("Error adding person:", error);
@@ -30,7 +30,6 @@ router.post("/add-person", async (req, res) => {
 router.get("/persons", async (req, res) => {
 
     try {
-
         const persons = await Person.findAll({ include: Company });
         res.render("./persons/retrievePersons", { persons });
     } catch (error) {

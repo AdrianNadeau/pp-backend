@@ -1,0 +1,37 @@
+<!-- companyDetails.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details</title>
+</head>
+<body>
+    <h1>Company Details</h1>
+
+    <!-- Display Company Details -->
+    <h2>Company Information:</h2>
+    <p>Company ID: <%= company.id %></p>
+    <p>Company Name: <%= company.company_name %></p>
+    <p>Company Description: <%= company.company_description %></p>
+    <p>Company Details: <%= company.company_details %></p>
+
+    <hr>
+
+    <!-- Display Associated Persons -->
+    <h2>Associated Persons:</h2>
+    <ul>
+        <% persons.forEach(person => { %>
+            <li>
+                <strong>Name:</strong> <%= person.firstName %> <%= person.lastName %> <br>
+                <strong>Role:</strong> <%= person.role %> <br>
+                <strong>Initials:</strong> <%= person.initials %> <br>
+            </li>
+        <% }); %>
+    </ul>
+
+    <!-- Add button to go back or other actions as needed -->
+
+</body>
+</html>

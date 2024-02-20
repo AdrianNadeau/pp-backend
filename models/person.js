@@ -3,6 +3,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const config = require('../config/config.json');
 const sequelize = new Sequelize(config.development);
+const Company = require('./company');
 
 const Person = sequelize.define('Person', {
     firstName: {
@@ -25,8 +26,8 @@ const Person = sequelize.define('Person', {
     tableName: 'Persons'
 });
 
-// Define the association with the Company model
-const Company = require('./company'); 
-Person.belongsTo(Company, { foreignKey: 'companyId' });
+
+// Company.hasMany(Person);
+Person.belongsTo(Company, { foreignKey: "companyId", onDelete: 'CASCADE' });
 
 module.exports = Person;

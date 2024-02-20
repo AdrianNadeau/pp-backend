@@ -10,7 +10,11 @@
     <ul>
         <% companies.forEach(company => { %>
             <li>
-                <%= company.company_name %> - <%= company.company_description %> - <%= company.company_details %>
+               Company ID: <%= company.id %> <br>Company Name:<%= company.company_name %> <br> Company Description: <%= company.company_description %> <br> Company Details:  <%= company.company_details %>
+              
+               <form action="/company/<%= company.id %>" method="GET">
+                <button type="submit">Fetch Persons</button>
+            </form>
                 <!-- Update Button -->
                 <form action="/update-company/<%= company.id %>" method="GET">
                     <button type="submit">Update</button>

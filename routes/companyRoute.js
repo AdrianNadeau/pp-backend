@@ -3,9 +3,10 @@
 const express = require("express");
 const router = express.Router();
 const Company = require("../models/company");
+const Person = require("../models/person");
 
 //Route to render the company creation form 
-router.get("/companyForm", (req, res) => {
+router.get("/create-company", (req, res) => {
     res.render("./company/createCompany");
 });
 // Create Company Route
@@ -24,12 +25,31 @@ router.post("/create-company", async (req, res) => {
 router.get("/companies", async (req, res) => {
     try {
         const companies = await Company.findAll();
-        res.render("./company/retrieveCompanies", {companies});
+        
+        res.render("./company/retrieveCompanies", { companies });
     } catch (error) {
-    console.error("Error while fetching companies data", error);  
-    res.status(500).send("Error while fetching companies");
-}
+        console.error("Error while fetching companies data", error);  
+        res.status(500).send("Error while fetching companies");
+    }
 });
+
+// Route to render company details along with associated persons
+router.get("/company/:id", async (req, res) => {
+    try {
+        const companyId = req.params.id;
+        const company = await Company.findByPk(companyId);
+        if (company) {
+            const persons = await Person.findAll({ where: { companyId } });
+            res.render("./company/companyDetails", { company, persons });
+        } else {
+            res.status(404).send("Company not found");
+        }
+    } catch (error) {
+        console.error("Error while fetching company details", error);
+        res.status(500).send("Error while fetching company details");
+    }
+});
+
 // Update Route to fetch the pagee
 router.get("/update-company/:id", async (req, res) => {
     try {
