@@ -39,7 +39,8 @@ sequelize.authenticate().then(() => {
 // Routes will go here
 const companyRoutes = require("./routes/companyRoute"); 
 const personRoutes = require("./routes/personRoute");
-
+const priorityRoutes = require("./routes/priorityRoute");
 //Routes usage will go here
 app.use(companyRoutes);
 app.use(personRoutes);
+app.use(priorityRoutes);

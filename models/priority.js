@@ -15,7 +15,7 @@ const Priority = sequelize.define('Priority', {
     }
 },
 {
-    tableName: 'priority'
+    tableName: 'Priority'
 });
 
 module.exports = Priority;
